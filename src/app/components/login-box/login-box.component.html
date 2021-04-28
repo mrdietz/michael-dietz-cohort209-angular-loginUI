@@ -1,3 +1,27 @@
-<div class="container">
-    <h1>Log in here</h1>
+<div class="container" id="login">
+    <div class="form">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="firstName">
+                First Name:
+                <input type="text" formControlName="firstName" required>
+            </label><br>
+            <label for="lastName">
+                Last Name:
+                <input type="text" formControlName="lastName" required>
+            </label><br>
+            <label for="email">
+                Email:
+                <input type="text" formControlName="email" required>
+            </label><br>
+            <label for="birthYear">
+                Birth Year:
+                <input type="number" formControlName="birthYear" required>
+            </label><br>
+            <button 
+            class="btn btn-light" 
+            type="submit"
+            [disabled]="!loginForm.valid">Submit</button>
+            <a routerLink="/results" routerLinkActive="active">Go to Results</a>
+        </form>
+    </div>
 </div>
