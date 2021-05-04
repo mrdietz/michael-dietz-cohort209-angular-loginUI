@@ -3,25 +3,25 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <label for="firstName">
                 First Name:
-                <input type="text" formControlName="firstName" required>
+                <input type="text" formControlName="firstName" [(ngModel)]="data.firstName" required>
             </label><br>
             <label for="lastName">
                 Last Name:
-                <input type="text" formControlName="lastName" required>
+                <input type="text" formControlName="lastName" [(ngModel)]="data.lastName" required>
             </label><br>
             <label for="email">
                 Email:
-                <input type="text" formControlName="email" required>
+                <input type="text" formControlName="email" [(ngModel)]="data.email" required>
             </label><br>
             <label for="birthYear">
                 Birth Year:
-                <input type="number" formControlName="birthYear" required>
+                <input type="number" formControlName="birthYear" [(ngModel)]="data.birthYear" required>
             </label><br>
             <button 
             class="btn btn-light" 
             type="submit"
+            routerLink="/results"
             [disabled]="!loginForm.valid">Submit</button>
-            <a routerLink="/results" routerLinkActive="active">Go to Results</a>
         </form>
     </div>
 </div>

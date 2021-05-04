@@ -1,12 +1,11 @@
 <div class="container" id="results">
     <div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">First Name:<span>Michael</span></li>
-            <li class="list-group-item">Last Name:<span>Dietz</span></li>
-            <li class="list-group-item">Email:<span>mrdietz@gmail.com</span></li>
-            <li class="list-group-item">Birth Year:<span>1979</span></li>
+            <li class="list-group-item">First Name:<span>{{ data.firstName }}</span></li>
+            <li class="list-group-item">Last Name:<span>{{ data.lastName }}</span></li>
+            <li class="list-group-item">Email:<span>{{ data.email }}</span></li>
+            <li class="list-group-item">Birth Year:<span>{{ data.birthYear }}</span></li>
         </ul>
     </div>
-    <button class="btn btn-warning">Go Back</button><br>
-    <a routerLink="/login" routerLinkActive="active">Go to Login</a>
+    <button class="btn btn-warning" routerLink="/login">Go Back</button><br>
 </div>    

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Data } from 'src/app/models/Data';
 
 @Component({
   selector: 'app-results',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
+  data: Data;
 
   constructor() { }
 
