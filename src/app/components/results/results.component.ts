@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Data } from 'src/app/models/Data';
 
 @Component({
@@ -7,11 +8,31 @@ import { Data } from 'src/app/models/Data';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
-  data: Data;
+  data: Data = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    birthYear: null
+  };
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.data = {
+      firstName: this.route.snapshot.params['firstName'],
+      lastName: this.route.snapshot.params['lastName'],
+      email: this.route.snapshot.params['email'],
+      birthYear: this.route.snapshot.params['birthYear']
+    };
+
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.data.firstName = params['firstName'];
+        this.data.lastName = params['lastName'];
+        this.data.email = params['email'];
+        this.data.birthYear = params['birthYeah'];
+      }
+    )
   }
 
 }

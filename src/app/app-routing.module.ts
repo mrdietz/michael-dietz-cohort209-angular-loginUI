@@ -5,9 +5,10 @@ import { LoginBoxComponent } from './components/login-box/login-box.component';
 import { ResultsComponent } from './components/results/results.component';
 
 const routes: Routes = [
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginBoxComponent },
-  { path: 'results', component: ResultsComponent },
-  { path: '', component: HomeComponent}
+  { path: 'results/:firstName/:lastName/:email/:birthYear', component: ResultsComponent }
+
 ];
 
 @NgModule({

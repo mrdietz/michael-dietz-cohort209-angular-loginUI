@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Data } from 'src/app/models/Data';
 
 @Component({
@@ -8,32 +9,35 @@ import { Data } from 'src/app/models/Data';
   styleUrls: ['./login-box.component.css']
 })
 export class LoginBoxComponent implements OnInit {
-  data: Data = {
-    firstName: 'test',
-    lastName: '',
-    email: '',
-    birthYear: null
-  };
+  // data: Data = {
+  //   firstName: '',
+  //   lastName: '',
+  //   email: '',
+  //   birthYear: 1
+  // };
 
-  loginForm = this.fb.group({
-    firstName: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', 
+  loginForm = new FormGroup({
+    firstName: new FormControl(['', Validators.required]),
+    lastName:  new FormControl(['', Validators.required]),
+    email:  new FormControl(['', 
       [Validators.required, 
-      Validators.email]],
-    birthYear: ['', 
+      Validators.email]]),
+    birthYear:  new FormControl([null, 
       [Validators.required,
       Validators.min(1800),
-      Validators.max(2000)]]
+      Validators.max(2000)]])
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private router: Router) {
+  }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    console.warn(this.loginForm.value)
+    this.router.navigate(['/results']);
+    console.log(this.loginForm)
   }
 }
 
