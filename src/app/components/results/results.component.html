@@ -1,9 +1,9 @@
 <div class="container" id="results">
     <div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">First Name:<span>{{ data.firstName }}</span></li>
-            <li class="list-group-item">Last Name:<span>{{ data.lastName }}</span></li>
-            <li class="list-group-item">Email:<span>{{ data.email }}</span></li>
+            <li class="list-group-item">First Name:<span>{{ data.firstName | uppercase }}</span></li>
+            <li class="list-group-item">Last Name:<span>{{ data.lastName | uppercase }}</span></li>
+            <li class="list-group-item">Email:<span>{{ data.email | uppercase }}</span></li>
             <li class="list-group-item">Birth Year:<span>{{ data.birthYear }}</span></li>
         </ul>
     </div>
