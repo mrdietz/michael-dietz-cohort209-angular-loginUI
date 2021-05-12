@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Data } from 'src/app/models/Data';
 
 @Component({
   selector: 'app-login-box',
@@ -9,35 +8,23 @@ import { Data } from 'src/app/models/Data';
   styleUrls: ['./login-box.component.css']
 })
 export class LoginBoxComponent implements OnInit {
-  // data: Data = {
-  //   firstName: '',
-  //   lastName: '',
-  //   email: '',
-  //   birthYear: 1
-  // };
-
-  loginForm = new FormGroup({
-    firstName: new FormControl(['', Validators.required]),
-    lastName:  new FormControl(['', Validators.required]),
-    email:  new FormControl(['', 
-      [Validators.required, 
-      Validators.email]]),
-    birthYear:  new FormControl([null, 
-      [Validators.required,
-      Validators.min(1800),
-      Validators.max(2000)]])
-  });
+  loginForm: FormGroup;
 
   constructor(private fb: FormBuilder,
               private router: Router) {
+  };
+
+  ngOnInit(): void {  
+    this.loginForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName:  ['', Validators.required],
+    email:  ['', [Validators.required, Validators.email]],
+    birthYear:  [null, [Validators.required, Validators.min(1800), Validators.max(2000)]]
+  });
   }
 
-  ngOnInit(): void {
-  }
-
-  onSubmit() {
-    this.router.navigate(['/results']);
-    console.log(this.loginForm)
-  }
+  onSubmit(form: FormGroup) {
+    this.router.navigate(['/results', form.value.firstName, form.value.lastName, form.value.email, form.value.birthYear]) 
+  };
 }
 

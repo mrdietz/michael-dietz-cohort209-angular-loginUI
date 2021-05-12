@@ -24,15 +24,6 @@ export class ResultsComponent implements OnInit {
       email: this.route.snapshot.params['email'],
       birthYear: this.route.snapshot.params['birthYear']
     };
-
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.data.firstName = params['firstName'];
-        this.data.lastName = params['lastName'];
-        this.data.email = params['email'];
-        this.data.birthYear = params['birthYeah'];
-      }
-    )
   }
 
 }
